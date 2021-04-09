@@ -10,8 +10,15 @@
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-function getSumOfDigits(/* n */) {
-  throw new Error('Not implemented');
-}
+function getSumOfDigits(n) {
+  // if n is one digit, just return
+  if (n > -10 && n < 10) return n;
 
+  // else perform reduce method and count sum of number digits
+  const num = (`${n}`).split('').reduce((a, b) => +a + +b);
+
+  // then execute same function recursively with new number
+  return getSumOfDigits(num);
+}
+// console.log(getSumOfDigits(129));
 module.exports = getSumOfDigits;
