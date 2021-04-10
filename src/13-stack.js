@@ -10,18 +10,37 @@
  * stack.pop(); // undefined
  *
  */
+function ListNode(x) {
+  this.value = x;
+  this.next = null;
+}
+
 class Stack {
-  push(/* element */) {
-    throw new Error('Not implemented');
+  push(el) {
+    const node = new ListNode();
+    node.value = el;
+    node.next = this.topNode === undefined ? null : this.topNode;
+    this.topNode = node;
   }
 
   pop() {
-    throw new Error('Not implemented');
+    // console.log(this.topNode);
+    if (this.topNode === undefined) return this.topNode;
+    const result = this.topNode.value;
+    this.topNode = this.topNode.next;
+    return result;
   }
 
   peek() {
-    throw new Error('Not implemented');
+    return this.topNode.value;
   }
 }
-
+// const stack1 = new Stack();
+// console.log(stack1.pop());
+// stack1.push(5);
+// stack1.push(9);
+// stack1.push(13);
+// console.log(stack1.peek());
+// console.log(stack1.pop());
+// console.log(stack1.topNode);
 module.exports = Stack;
